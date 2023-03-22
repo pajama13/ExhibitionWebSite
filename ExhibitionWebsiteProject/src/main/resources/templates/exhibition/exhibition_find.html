@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+   margin-top: 50px;
+}
+.row{
+   margin: 0px auto;
+   width:900px;
+}
+h1{
+   text-align: center;
+}
+#gallery li{
+  width:215px;height:302px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.3);
+}
+.pagination a{
+  padding: 10px 17px;
+  text-decoration:none;
+  color:black;
+}
+li.current a{
+  color:white;
+}
+</style>
+</head>
+<body>
+ 
+ 
+<div class="wrapper row3">
+  <main class="container clear" style="margin-top:0;"> 
+  
+    <h2 class="text-center" style="margin:0 0 30px 0;">🔍관심있는 전시를 검색해보세요!</h2>
+    <header class="heading text-center" style="margin:0 0 50px 0;text-align:center;">
+      <form method="post" action="/exhibition/exhibition_find" class="inline">
+         <input type=text name=word size=40 class="input-sm" autocomplete=off th:placeholder="${word}" style="border:1px solid black;">
+         <input type=submit value="검색" class="btn btn-sm btn-primary" style="background:black;">
+      </form>
+    </header>
+    
+    
+    <div class="content" th:if="${findCount>0}"> 
+    
+	  <div th:if="${word!='2023'}" style="margin:50px 0;">
+	    <h3 style="display:inline;">"</h3>
+	    <h3 th:text="${word}" style="display:inline;"></h3>
+	    <h3 style="display:inline;">"&nbsp;에 대한 검색결과 : </h3>
+	    <h3 th:text="${findCount}" style="display:inline;"></h3>
+	    <h3 style="display:inline;">건</h3>
+	  </div>
+    
+      <div id="gallery">
+        <figure>
+          
+          <ul class="nospace clear">
+            <li th:each="vo,i:${list}" th:class="${i.index%4==0}?'one_quarter first':'one_quarter'" >
+              <a th:href="@{/exhibition/exhibition_detail(geno=${vo.geno})}">
+                <img th:src="${vo.poster}" style="width:100%;height:100%;">
+              </a>
+            </li>
+          </ul>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+      
+       <nav class="pagination">
+        <ul>
+          <li th:if="${startPage>1}"><a th:href="@{/exhibition/exhibition_find(page=${startPage-1},word=${word})}">&laquo; 이전</a></li>
+          <li th:class="${curpage==i}?'current':''" th:each="i:${#numbers.sequence(startPage,endPage)}">
+            <a th:href="@{/exhibition/exhibition_find(page=${i},word=${word})}" th:text="${i}"></a>
+          </li>
+          <li th:if="${endPage<totalpage}">
+            <a th:href="@{/exhibition/exhibition_find(page=${endPage+1},word=${word})}">다음 &raquo;</a>
+          </li>
+        </ul>
+      </nav>
+      
+      
+    </div>
+    
+    <!-- 검색결과 없을 때 -->
+    <div th:if="${findCount==0}" style="margin:0 auto;display:flex;flex-direction:column;align-items:center;">
+      <div>
+        <h3 style="display:inline;">"</h3>
+        <h3 th:text="${word}" style="display:inline;"></h3>
+        <h3 style="display:inline;">"&nbsp;에 대한 검색결과가 없습니다.💦</h3>
+      </div>
+      <h4 style="margin:15px 0;">다른 단어로 다시 검색해주세요!</h4>
+    </div>
+    
+    
+  </main>
+</div>
+ 
+ 
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+@font-face {
+     font-family: 'S-CoreDream-3Light';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+#mylogo{
+  font-family:'S-CoreDream-3Light';
+  color:black;
+}
+#mainav .active a, #mainav a:hover, #mainav li:hover > a{
+  background-color:white;
+  text-decoration:none;
+}
+#mainav{
+  border-bottom:1px solid black; border-radius:0;
+}
+</style>
+</head>
+<body>
+<th:block>
+
+
+<div class="wrapper row2" style="padding:0;">
+  <nav id="mainav" class="clear" style="display:flex;justify-content:space-between;align-items:center;"> 
+	<div style="display:inline-block;">
+	  <a id="mylogo" th:href="@{/}" style="padding:0 0 0 40px;width:450px;font-size:32px;line-height:63px;font-weight:bold;">
+        오늘의 전시</a>
+	</div>																									 
+    <ul class="clear" style="margin:20px 0;">
+      <!-- <li>
+        <a id="mylogo" th:href="@{/}" style="padding:0 0 0 40px;width:450px;font-size:32px;line-height:63px;font-weight:bold;">
+        오늘의 전시</a>
+      </li> -->
+      <li><a class="drop" href="#">모든전시</a>
+        <ul>
+          <li><a th:href="@{/exhibition/exhibition_now}">진행 중인 전시</a></li>
+          <li><a th:href="@{/exhibition/exhibition_end}">지난 전시</a></li>
+        </ul>
+      </li>
+      <li><a th:href="@{/exhibition/exhibition_find}">전시찾기</a></li>
+      <!-- <li><a class="drop" href="#">주변맛집</a>
+        <ul>
+          <li><a href="pages/gallery.html">명소</a></li>
+          <li><a href="pages/gallery.html">자연&관광</a></li>
+          <li><a href="pages/gallery.html">쇼핑</a></li>
+        </ul>
+      </li> -->
+      <li><a th:href="@{/board/board_list}">커뮤니티</a></li>
+    </ul>
+																											  
+  </nav>
+</div>
+</th:block>
+
+</body>
+</html>

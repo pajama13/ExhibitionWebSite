@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+a,a:hover{
+  color:black;text-decoration:none;  
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  border-top:0;
+  background:white;
+}
+th.text-center{
+  background:white;
+  color:black;
+}
+table tr{
+  border-top:1px solid black;
+}
+tfoot tr a{
+  background:black;
+  color:white;
+}
+.row3 a{
+  margin:10px;
+}
+.table>thead>tr>th{
+  border-bottom:0;
+}
+</style>
+</head>
+<body>
+<div class="wrapper row3">
+  <main class="container clear"> 
+    <table class="table">
+      <tr style="border-top:0;">
+        <td>
+          <a href="/board/board_insert" class="btn btn-sm btn-primary" style="background:black;">글쓰기</a>
+        </td>
+      </tr>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="10%" class="text-center">번호</th>
+          <th width="35%" class="text-center">제목</th>
+          <th width="15%" class="text-center">작성자</th>
+          <th width="20%" class="text-center">작성일</th>
+          <th width="15%" class="text-center">조회수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="vo:${list}">
+          <td width="10%" class="text-center" th:text="${vo.no}"></td>
+          <td width="45%"><a th:href="@{/board/board_detail(no=${vo.no})}" th:text="${vo.subject}"></a></td>
+          <td width="15%" class="text-center" th:text="${vo.name}"></td>
+          <td width="20%" class="text-center" th:text="${vo.regdate}"></td>
+          <td width="10%" class="text-center" th:text="${vo.hit}"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" class="text-center">
+            <a th:href="@{/board/board_list(page=${curpage>1?curpage-1:curpage})}" class="btn btn-sm">이전</a>
+            <span th:text="${curpage}"></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span th:text="${totalpage}"></span>
+            <a th:href="@{/board/board_list(page=${curpage<totalpage?curpage+1:curpage})}" class="btn btn-sm">다음</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </main>
+</div>
+</body>
+</html>

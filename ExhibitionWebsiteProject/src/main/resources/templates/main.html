@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Gravity</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- 폰트어썸 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- 부트스트랩 -->
+<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+  color:black;
+  margin:0px;
+  padding:0px;
+  list-style: none;
+  border-collapse: collapse;
+  text-decoration: none;
+  font-size:16px;
+}
+#mainav{
+  background:white;
+}
+a{
+  color:black;
+  cursor:pointer;
+}
+.row3{
+  background:white;
+}
+table, th, td{
+  border:0;
+}
+tr{
+  background:none;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  border-top:0;
+}
+</style>
+</head>
+<body id="top">
+<!-- header -->
+<th:block th:include="main/header"></th:block>
+<!-- home : 실제데이터출력 -->
+<th:block th:include="${main_html}"></th:block>
+<!-- footer -->
+<th:block th:include="main/footer"></th:block>
+
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a> 
+<!-- JAVASCRIPTS --> 
+<script src="../layout/scripts/jquery.min.js"></script> 
+<script src="../layout/scripts/jquery.backtotop.js"></script> 
+<script src="../layout/scripts/jquery.mobilemenu.js"></script> 
+<script src="../layout/scripts/jquery.flexslider-min.js"></script>
+</body>
+</html>
