@@ -9,6 +9,11 @@
   margin:0 auto;
   width:300px;
 }
+.table>tbody>tr>td{
+  border:0;
+}
+td.text-center{background:white;}
+input.a{background:black;color:white;margin:20px 0;}
 </style>
 </head>
 <body>
@@ -19,14 +24,14 @@
       <table class="table">
         <tr>
           <td class="inline">
-            비밀번호:<input type=password name=pwd class="input-sm" size=15>
+            비밀번호&nbsp;&nbsp;&nbsp;<input type=password name=pwd class="input-sm" size=15>
  			<input type=hidden name=no value="${no }">        
           </td>
         </tr>
         <tr>
           <td class="text-center">
-            <input type=submit value="삭제" class="btn btn-sm btn-danger">
-            <input type=button value="취소" class="btn btn-sm btn-info"
+            <input type=submit value="삭제" class="btn btn-sm a">
+            <input type=button value="취소" class="btn btn-sm a"
            		   onclick="javascript:history.back()"
             />
         
